@@ -121,6 +121,8 @@ GEM
       pry (>= 0.9.10)
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
+    purecss-rails (0.6.0)
+      railties (>= 3.2.6, < 5)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
@@ -246,6 +248,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  purecss-rails (~> 0.6.0)
   quiet_assets
   rails (= 4.2.0)
   rails_12factor

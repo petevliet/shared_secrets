@@ -231,6 +231,7 @@ DEPENDENCIES
   better_errors
   coffee-rails (~> 4.1.0)
   dotenv-rails
+  faraday
   jbuilder (~> 2.0)
   jquery-rails
   omniauth

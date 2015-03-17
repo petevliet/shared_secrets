@@ -35,3 +35,25 @@ Cash on Hand: $<%= @cash_on_hand %><br />
     <% end %>
   </tbody>
 </table>
+
+<h1>Top 5 Industries</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Industry</th>
+      <th>Total</th>
+      <th>Indivs</th>
+      <th>PACs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @industries.each do |industry| %>
+      <tr>
+        <td><%= industry["industry_name"] %></td>
+        <td>$<%= industry["total"] %></td>
+        <td>$<%= industry["indivs"] %></td>
+        <td>$<%= industry["pacs"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

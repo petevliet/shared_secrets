@@ -26,9 +26,21 @@ class DataFetcher
      req.params['cid'] = cid
      req.params['apikey'] = ENV["API_KEY"]
      req.params['output'] = 'json'
+     req.params['cycle'] = '2014'
    end
    JSON.parse(response.body)
  end
 
+ def contrib_info(cid)
+   response = @rep_search.get do |req|
+     req.url "/api/"
+     req.params['method'] = "candContrib"
+     req.params['cid'] = cid
+     req.params['apikey'] = ENV["API_KEY"]
+     req.params['output'] = 'json'
+     req.params['cycle'] = '2014'
+   end
+   JSON.parse(response.body)
+ end
 
 end

@@ -67,20 +67,10 @@ class RepsController < ApplicationController
     # query the server
     contrib_info_results = df.contrib_info(params[:cid])\
       ["response"]["contributors"]["contributor"]
-    # pull out the attributes of each contributor
-    unsorted_contributors = contrib_info_results.map do |contributor|
-      contributor['@attributes']
-    end
-    # sort and take the top 5
-    @contributors = unsorted_contributors.sort_by do |contributor|
-      contributor["total"].to_i
-    end.reverse.take(5)
-    # add commas to the monetary values
-    @contributors.each do |contributor|
-      %w[total pacs indivs].each do |key|
-        contributor[key].replace add_commas(contributor[key])
-      end
-    end
+    @contributors = top_five(contrib_info_results)
+    industry_info_results = df.industry_info(params[:cid])\
+      ["response"]["industries"]["industry"]
+    @industries = top_five(industry_info_results)
   end
 
   private
@@ -88,6 +78,23 @@ class RepsController < ApplicationController
     str.split('.').tap do |ds, _| 
       ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse
     end.join('.')
+  end
+
+  def top_five(donors)
+    # pull out the attributes of each donor
+    unsorted_donors = donors.map do |donor|
+      donor['@attributes']
+    end
+    # sort and take the top 5
+    @donors = unsorted_donors.sort_by do |donor|
+      donor["total"].to_i
+    end.reverse.take(5)
+    # add commas to the monetary values
+    @donors.each do |donor|
+      %w[total pacs indivs].each do |key|
+        donor[key].replace add_commas(donor[key])
+      end
+    end
   end
 
 end

@@ -11,6 +11,8 @@ def index
     end
   end
 
+  @user = User.find_by(twitter_id: session[:user_id])
+
 end
 
 end

@@ -8,8 +8,8 @@ class RepsController < ApplicationController
 
     if params[:state]
       state_info_results = df.state_info(params[:state])
-      state_info_results["response"]["legislator"].each_with_index do |rep, index|
-        @reps[state_info_results["response"]["legislator"][index]["@attributes"]["cid"]] = state_info_results["response"]["legislator"][index]["@attributes"]["firstlast"]
+      state_info_results["response"]["legislator"].each do |rep|
+        @reps[rep["@attributes"]["cid"]] = rep["@attributes"]["firstlast"]
       end
     end
   end
@@ -18,9 +18,10 @@ class RepsController < ApplicationController
     df = DataFetcher.new
 
     rep_info_results = df.rep_info(params[:cid])
-    @name = rep_info_results["response"]["summary"]["@attributes"]["cand_name"].split(', ').reverse.join(' ')
+    summary = rep_info_results["response"]["summary"]["@attributes"] 
+    @name = summary["cand_name"].split(', ').reverse.join(' ')
 
-    case rep_info_results["response"]["summary"]["@attributes"]["party"]
+    case summary["party"]
     when "D"
       @party = "Democrat"
     when "R"
@@ -33,7 +34,7 @@ class RepsController < ApplicationController
       @party = "Unknown"
     end
 
-    case rep_info_results["response"]["summary"]["@attributes"]["chamber"]
+    case summary["chamber"]
     when "H"
       @chamber = "House"
     when "S"
@@ -42,26 +43,33 @@ class RepsController < ApplicationController
       @chamber = "Unknown"
     end
 
-    @state = rep_info_results["response"]["summary"]["@attributes"]["state"]
+    @state = summary["state"]
 
-    @first_elected = rep_info_results["response"]["summary"]["@attributes"]["first_elected"]
+    @first_elected = summary["first_elected"]
 
-    @total = rep_info_results["response"]["summary"]["@attributes"]["total"].split('.').tap{|ds, _| ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse}.join('.')
+    @total = add_commas(summary["total"])
 
-    @spent = rep_info_results["response"]["summary"]["@attributes"]["spent"].split('.').tap{|ds, _| ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse}.join('.')
+    @spent = add_commas(summary["spent"])
 
-    @cash_on_hand = rep_info_results["response"]["summary"]["@attributes"]["cash_on_hand"].split('.').tap{|ds, _| ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse}.join('.')
+    @cash_on_hand = add_commas(summary["cash_on_hand"])
 
-    @last_updated = rep_info_results["response"]["summary"]["@attributes"]["last_updated"]
+    @last_updated = summary["last_updated"]
 
     state_info_results = df.state_info(@state)["response"]["legislator"]
-    state_info_results.each_with_index do |rep, index|
-      if state_info_results[index]["@attributes"]["cid"] == params[:cid]
-        @twitter_url = "https://twitter.com/" + state_info_results[index]["@attributes"]["twitter_id"]
-        @youtube_url = state_info_results[index]["@attributes"]["youtube_url"]
-        @facebook_url = "https://facebook.com/" + state_info_results[index]["@attributes"]["facebook_id"]
+    state_info_results.each do |rep|
+      if rep["@attributes"]["cid"] == params[:cid]
+        @twitter_url = "https://twitter.com/" + rep["@attributes"]["twitter_id"]
+        @youtube_url = rep["@attributes"]["youtube_url"]
+        @facebook_url = "https://facebook.com/" + rep["@attributes"]["facebook_id"]
       end
     end
+  end
+
+  private
+  def add_commas(str)
+    str.split('.').tap do |ds, _| 
+      ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse
+    end.join('.')
   end
 
 end

@@ -63,6 +63,24 @@ class RepsController < ApplicationController
         @facebook_url = "https://facebook.com/" + rep["@attributes"]["facebook_id"]
       end
     end
+
+    # query the server
+    contrib_info_results = df.contrib_info(params[:cid])\
+      ["response"]["contributors"]["contributor"]
+    # pull out the attributes of each contributor
+    unsorted_contributors = contrib_info_results.map do |contributor|
+      contributor['@attributes']
+    end
+    # sort and take the top 5
+    @contributors = unsorted_contributors.sort_by do |contributor|
+      contributor["total"].to_i
+    end.reverse.take(5)
+    # add commas to the monetary values
+    @contributors.each do |contributor|
+      %w[total pacs indivs].each do |key|
+        contributor[key].replace add_commas(contributor[key])
+      end
+    end
   end
 
   private

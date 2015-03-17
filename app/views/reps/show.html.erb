@@ -13,3 +13,25 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 
 
 <br />Last Updated: <%= @last_updated %>
+
+<h1>Top 5 Contributors</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Contributor</th>
+      <th>Total</th>
+      <th>Indivs</th>
+      <th>PACs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contributors.each do |contributor| %>
+      <tr>
+        <td><%= contributor["org_name"] %></td>
+        <td>$<%= contributor["total"] %></td>
+        <td>$<%= contributor["indivs"] %></td>
+        <td>$<%= contributor["pacs"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

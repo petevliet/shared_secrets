@@ -4,4 +4,12 @@ Rails.application.routes.draw do
 
   root 'reps#index'
 
+  get 'auth/twitter/callback' => 'sessions#create'
+
+  get 'auth/twitter/failure' => 'errors#index'
+
+  resources :users
+
+  get '/logout' => 'sessions#destroy'
+
 end

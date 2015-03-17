@@ -3,22 +3,32 @@ class RepsController < ApplicationController
   before_action :authorize
 
   def index
-    @states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
-
     df = DataFetcher.new
     @reps = {}
     @sens = {}
+    @state_name = states_by_abbrev[params[:state]]
 
     if params[:state]
       state_info_results = df.state_info(params[:state])
       state_info_results["response"]["legislator"].each do |rep|
+        # find the name
+        cid = rep["@attributes"]["cid"]
         if rep["@attributes"]["office"][-2] != "S"
-          @reps[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
-        elsif rep["@attributes"]["office"][-2] == "S"
-          @sens[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
+          hash_to_use = @reps
+        else
+          hash_to_use = @sens
         end
+        hash_to_use[cid] = {name: rep["@attributes"]["firstlast"]}
+        # find the class to use for the overlay image
+        hash_to_use[cid][:img_class] = 'rep-img-' +
+          case rep["@attributes"]["party"]
+          when 'D'; 'dem'
+          when 'R'; 'gop'
+          else    ; 'oth'
+          end
       end
-      @reps = @reps.sort_by {|_, rep| rep.split.last.downcase}
+      @reps = @reps.sort_by {|_, rep| rep[:name].split.last.downcase}
+      @sens = @sens.sort_by {|_, sen| sen[:name].split.last.downcase}
     end
   end
 

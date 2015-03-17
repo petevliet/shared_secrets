@@ -1,0 +1,293 @@
+//=require purecss
+
+// font
+@import url(http://fonts.googleapis.com/css?family=Ek+Mukta:400,700);
+
+// colorscheme colors
+$base_green: #97B250;
+$base_charcoal: #333230;
+$base_beige_dark: #736D61;
+$base_beige_medium: #BAAB90;
+$base_beige_light: #FFE5BA;
+$base_link_color: #9E9481;
+
+body {
+  background-color: #F7F7F7;
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 400;
+  padding-top: 3.9em;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid $base_beige_medium;
+}
+
+nav {
+  z-index: 3;
+  // coloring
+  background-color: $base_charcoal;
+  color: $base_beige_light;
+  // fix it to the top
+  top: 0px;
+  position: fixed;
+  // span across the whole page
+  width: 100%;
+  vertical-align: middle;
+  /*font-size: 1.5em;*/
+  margin-bottom: 1em;
+  border-bottom: 0.2em $base_green solid;
+}
+
+.main-splash {
+  // bring in under the navbar
+  z-index: 1;
+  margin-top: 2em;
+  position: fixed;
+  top: 0px;
+  // make it span the gap
+  padding: 5em 0px 10em 0px;
+  // centered all the way across the page
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  // styling
+  background-color: $base_green;
+}
+
+a, a:hover, a:focus, a:visited {
+  color: $base_green;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a#logo, a#logo:hover {
+  // make it fit nicely into the navbar
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.5em 0.5em 0.5em 0em;
+  font-size: 1.5em;
+  line-height: 1em;
+  /*background-color: $base_green;*/
+  color: #FFFFFF;
+  text-shadow: 1px 1px $base_charcoal;
+}
+
+// arrows
+#right_arrow_green, #right_arrow_dark {
+  // display it inline with the logo
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.5em;
+  // make it look like an arrow
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+  // use border only for styling
+  width: 0px;
+  height: 0px;
+}
+
+#right_arrow_dark {
+  border-left: 1em solid $base_charcoal;
+  background-color: $base_green;
+}
+
+#right_arrow_green {
+  border-left: 1em solid $base_green;
+}
+
+.page-wrapper {
+  z-index: 2;
+  position: absolute;
+  margin-top: 18.5em;
+  background-color: inherit;
+  width: 100%;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// container widths
+
+@each $breakpoint in 35.5em 48em 64em 80em {
+  @media screen and (min-width: #{$breakpoint}) {
+    .container {
+      width: $breakpoint - 2em;
+    }
+  }
+}
+
+p {
+  padding: 0.5em;
+}
+
+footer {
+  // spacing
+  margin-top: 3em;
+  border-top: 1px #A5A5A5 solid;
+  padding: 1em;
+  // styling
+  text-align: right;
+  color: #909090;
+}
+
+// override focused colors
+.pure-form input[type="text"]:focus,
+.pure-form input[type="password"]:focus
+{
+  border-color: $base_green;
+}
+
+.pure-button-primary {
+  background-color: $base_beige_dark;
+}
+
+.well {
+  background-color: #F0F0F0;
+  padding: 1em;
+  border: 2px solid #D0D0D0;
+  margin-bottom: 1em;
+}
+
+.splash-container {
+  margin-top: 2em;
+}
+
+.flash-alert, .flash-notice {
+  background-color: blue;
+  padding: 1em;
+  margin-bottom: 0.8em;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.flash-notice {
+  background-color: $base_green;
+}
+
+.flash-alert {
+  background-color: #DB5C5C;
+}
+
+#logo_full {
+  display: inline-block;
+}
+
+#logo_collapse {
+  display: none;
+}
+
+@media screen and (max-width: 48em) {
+  #logo_full {
+    display: none;
+  }
+  #logo_collapse {
+    display: inline-block;
+  }
+}
+
+.nav-menu {
+  /*display: inline-block;*/
+  float: right;
+  width: auto;
+  vertical-align: middle;
+}
+
+.pure-menu-item {
+  height: 100%;
+  vertical-align: middle;
+  line-height: 1em;
+}
+
+.pure-menu-link,
+.pure-menu-link:visited {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: $base_link_color;
+}
+
+.pure-menu-link:hover,
+.pure-menu-link:focus {
+  background-color: $base_beige_dark;
+  color: #FFFFFF;
+  transition-duration: 400ms;
+}
+
+.state-select {
+  display: inline-block;
+  .pure-menu-link {
+    padding: 0.3em;
+  }
+  .pure-menu-has-children > .pure-menu-link:hover {
+    color: $base_link_color;
+  }
+  .pure-menu-has-children > .pure-menu-link {
+    border: 1px solid $base_link_color;
+    background-color: #FFFFFF;
+  }
+  .pure-menu-children {
+    overflow: auto;
+    border-style: solid;
+    border-color: $base_link_color;
+    border-width: 0px 1px 1px 1px;
+    max-height: 20em;
+    .pure-menu-item {
+      height: 1.6em;
+    }
+  }
+}
+
+.rep-thumbnail {
+  display: inline-block;
+  min-width: 10em;
+  margin: 1em;
+  text-align: center;
+  padding: 1em 0.5em 0.5em 0.5em;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid $base_beige_medium;
+  /*background-color: #E0E0E0;*/
+  .rep-caption {
+    padding-top: 0.5em;
+    padding-bottom: 0.07em;
+  }
+  text-transform: none;
+  color: $base_charcoal;
+  background-color: #FFFFFF;
+  transition-duration: 300ms;
+  .thumbnail-img {
+    border: 1px solid $base_beige_medium;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    transition-duration: 300ms;
+  }
+}
+
+.rep-img-dem,
+.rep-img-gop,
+.rep-img-oth {
+  display: inline-block;
+  height: 108px;
+  width: 88px;
+}
+
+
+.rep-img-dem { background-image: url(/party_icons/donkey_icon.png); }
+.rep-img-gop { background-image: url(/party_icons/elephant_icon.png); }
+.rep-img-oth { background-image: url(/party_icons/unknown_icon.png); }
+
+.rep-thumbnail:hover {
+  .thumbnail-img {
+    border: 1px solid $base_beige_medium;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    opacity: 0.15;
+  }
+}
+
+/*.rep-grid {*/
+  /*margin: 0em -1em 0em -1em;*/
+/*}*/

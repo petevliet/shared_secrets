@@ -1,0 +1,18 @@
+<div class="rep-grid">
+  <div class="pure-g">
+    <% reps.each do |cid, rep| %>
+      <% name = rep[:name] %>
+      <% img_class = rep[:img_class] %>
+      <div class="pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-5 pure-u-xl-1-6">
+        <%= link_to rep_path(cid) do %>
+          <div class="rep-thumbnail">
+            <div class="rep-img <%= img_class %>">
+              <%= image_tag "https://s3.amazonaws.com/assets.opensecrets.org/politicians/img/#{cid}.jpg" %>
+            </div>
+            <div class="rep-caption"><%= name %></div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,22 +1,8 @@
-
-<%= form_tag reps_path, {:method => 'get'} do %>
-  <%= select_tag :state, options_for_select(@states) %>
-  <%= submit_tag %>
+<% unless @sens.empty? %>
+  <h1><%= @state_name %> Senators</h1>
+  <%= render partial: 'rep_list', locals: {reps: @sens} %>
 <% end %>
-
-<br /><br />
-<hr>
-
-<% if @reps.present? %>
-<b>Representatives (by district):</b><br />
-  <% @reps.each do | cid, name | %>
-      <%= link_to "#{name[0]} (#{name[1]})", rep_path(cid) %><br />
-    <% end %>
-<% end %>
-<br />
-<% if @sens.present? %>
-<b>Senators:</b><br />
-  <% @sens.each do | cid, name | %>
-      <%= link_to "#{name[0]} (#{name[1]})", rep_path(cid) %><br />
-    <% end %>
+<% unless @reps.empty? %>
+  <h1><%= @state_name %> Representitives</h1>
+  <%= render partial: 'rep_list', locals: {reps: @reps} %>
 <% end %>

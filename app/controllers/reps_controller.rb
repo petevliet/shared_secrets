@@ -1,5 +1,7 @@
 class RepsController < ApplicationController
 
+  before_action :authorize
+
   def index
     @states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
@@ -18,7 +20,7 @@ class RepsController < ApplicationController
     df = DataFetcher.new
 
     rep_info_results = df.rep_info(params[:cid])
-    summary = rep_info_results["response"]["summary"]["@attributes"] 
+    summary = rep_info_results["response"]["summary"]["@attributes"]
     @name = summary["cand_name"].split(', ').reverse.join(' ')
 
     case summary["party"]
@@ -75,7 +77,7 @@ class RepsController < ApplicationController
 
   private
   def add_commas(str)
-    str.split('.').tap do |ds, _| 
+    str.split('.').tap do |ds, _|
       ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse
     end.join('.')
   end
@@ -96,5 +98,11 @@ class RepsController < ApplicationController
       end
     end
   end
+
+def authorize
+  if !logged_in?
+    redirect_to '/visitors', notice: "Please log in for full access."
+end
+end
 
 end

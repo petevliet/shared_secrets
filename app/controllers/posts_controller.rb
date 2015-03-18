@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @cid = params[:rep_cid]
   end
 
   def create
@@ -10,9 +11,9 @@ class PostsController < ApplicationController
     @post.user_id = session[:user_id]
     if @post.save
       flash[:notice] = "post successfully created"
-      redirect_to rep_path(@post.cid)
+      redirect_to rep_path(params[:rep_cid])
     else
-      render '/'
+      render :new
     end
   end
 

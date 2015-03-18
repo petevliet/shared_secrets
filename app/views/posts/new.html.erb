@@ -1,6 +1,6 @@
 
 
-<%= simple_form_for (params[:rep_cid]) do |f| %>
+<%= simple_form_for @post, url: rep_posts_path(@cid) do |f| %>
   <%= f.input :link %>
   <%= f.input :body %>
   <%= f.button :submit %>

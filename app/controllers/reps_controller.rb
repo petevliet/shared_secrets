@@ -7,19 +7,27 @@ class RepsController < ApplicationController
 
     df = DataFetcher.new
     @reps = {}
+    @sens = {}
 
     if params[:state]
       state_info_results = df.state_info(params[:state])
       state_info_results["response"]["legislator"].each do |rep|
-        @reps[rep["@attributes"]["cid"]] = rep["@attributes"]["firstlast"]
+        if rep["@attributes"]["office"][-2] != "S"
+          @reps[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
+        elsif rep["@attributes"]["office"][-2] == "S"
+          @sens[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
       end
+    end
     end
   end
 
   def show
+    @posts = Post.where(cid:(params[:cid]))
     df = DataFetcher.new
 
     rep_info_results = df.rep_info(params[:cid])
+
+    @rep_cid = rep_info_results["response"]["summary"]["@attributes"]["cid"]
     summary = rep_info_results["response"]["summary"]["@attributes"]
     @name = summary["cand_name"].split(', ').reverse.join(' ')
 

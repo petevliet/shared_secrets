@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :reps, only: [:index, :show], param: :cid
 
-  root 'landing#dashboard'
+  root 'reps#index'
 
   get 'auth/twitter/callback' => 'sessions#create'
 

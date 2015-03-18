@@ -1,7 +1,7 @@
 
 
 <%= simple_form_for @post, url: rep_posts_path(@cid) do |f| %>
-  <%= f.input :link %>
+  <%= f.input :link, as: :url %>
   <%= f.input :body %>
   <%= f.button :submit %>
 <% end %>

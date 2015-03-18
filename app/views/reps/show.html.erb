@@ -16,7 +16,9 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 <br />
   <% @posts.each do |post| %>
     <%= post.link %><br />
-    <%= post.body %>
+    <%= post.body %><br />
+    <%= post.comments.count %> Comments <br />
+    <%= link_to 'Comment on this Post', new_rep_post_comment_path((params[:cid]), post) %><br />
   <% end %>
 
 <br />Last Updated: <%= @last_updated %>

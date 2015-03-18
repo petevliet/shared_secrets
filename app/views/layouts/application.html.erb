@@ -8,12 +8,24 @@
 </head>
 <body>
 
-
-<%= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <% if current_user.nil? %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+  <% else %>
+  <%= link_to "Log out", "/logout" %>
+  <% end %>
 
 
 <br>
 <br>
+
+
+<% flash.each do |key, value| %>
+      <h3><div class="alert alert-<%= key %>"><%= value %></div></h3>
+  <% end %>
+
+
+  <br>
+  <br>
 
 <%= yield %>
 

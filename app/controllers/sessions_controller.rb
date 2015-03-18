@@ -13,14 +13,15 @@ def create
   user.update_attributes(name: env['omniauth.auth']['info']['name'],
                           email: env['omniauth.auth']['info']['email'])
 
-  redirect_to root_path, notice: "You're logged in!"
+  redirect_to dashboard_path, notice: "You're logged in!"
 end
+
 
 def destroy
   session[:user_id] = nil
   session[:user_token] = nil
   session[:user_secret] = nil
-  redirect_to root_path, notice: "Logged out."
+  redirect_to visitors_path, notice: "Logged out."
 end
 
 end

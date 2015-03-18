@@ -11,6 +11,18 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 <%= link_to "Facebook", @facebook_url %><br />
 <%= link_to "YouTube", @youtube_url %><br />
 
+<%= link_to "Post a link about this legislator", new_rep_post_path(@rep_cid) %>
+<br />
+
+<% if @posts.present? %>
+<h4>Posts about <%= @name %> </h4>
+  <% @posts.each do |post| %>
+    <%= post.link %><br />
+    <%= post.body %><br />
+    <%= link_to pluralize(post.comments.count, "Comment"), rep_post_path(@rep_cid), post) %><br />
+    <%= link_to 'Comment on this Post', new_rep_post_comment_path(@rep_cid), post) %><br />
+  <% end %>
+<% end %>
 
 <br />Last Updated: <%= @last_updated %>
 

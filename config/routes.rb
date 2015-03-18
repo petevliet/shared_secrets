@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :reps, only: [:index, :show], param: :cid
+  resources :reps, only: [:index, :show], param: :cid do
+    resources :posts do
+      resources :comments
+    end
+  end
 
   root 'landing#visitors'
 

@@ -3,7 +3,7 @@ ruby '2.2.0'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter'
-
+gem 'simple_form'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record

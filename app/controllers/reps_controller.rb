@@ -15,6 +15,7 @@ class RepsController < ApplicationController
   end
 
   def show
+    @posts = Post.where(cid:(params[:cid]))
     df = DataFetcher.new
 
     rep_info_results = df.rep_info(params[:cid])

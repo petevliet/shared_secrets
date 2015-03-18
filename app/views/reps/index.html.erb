@@ -7,14 +7,14 @@
 <br /><br />
 <hr>
 
-<% if @reps %>
+<% if @reps.present? %>
 <b>Representatives (by district):</b><br />
   <% @reps.each do | cid, name | %>
       <%= link_to "#{name[0]} (#{name[1]})", rep_path(cid) %><br />
     <% end %>
 <% end %>
 <br />
-<% if @sens %>
+<% if @sens.present? %>
 <b>Senators:</b><br />
   <% @sens.each do | cid, name | %>
       <%= link_to "#{name[0]} (#{name[1]})", rep_path(cid) %><br />

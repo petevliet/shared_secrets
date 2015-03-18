@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   get '/logout' => 'sessions#destroy'
 
-  get '/dashboard' => 'landing#dashboard'
-
   get '/visitors' => 'landing#visitors'
 
 end

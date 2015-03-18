@@ -13,7 +13,7 @@ def create
   user.update_attributes(name: env['omniauth.auth']['info']['name'],
                           email: env['omniauth.auth']['info']['email'])
 
-  redirect_to dashboard_path, notice: "You're logged in!"
+  redirect_to reps_path, notice: "You're logged in!"
 end
 
 

@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
 
+  def show
+    @post = Post.find(params[:id])
+    @comments = Comment.where(post_id:(params[:id]))
+  end
+
   def new
     @post = Post.new
     @cid = params[:rep_cid]

@@ -18,7 +18,8 @@ class RepsController < ApplicationController
     df = DataFetcher.new
 
     rep_info_results = df.rep_info(params[:cid])
-    summary = rep_info_results["response"]["summary"]["@attributes"] 
+    @rep_cid = rep_info_results["response"]["summary"]["@attributes"]["cid"]
+    summary = rep_info_results["response"]["summary"]["@attributes"]
     @name = summary["cand_name"].split(', ').reverse.join(' ')
 
     case summary["party"]
@@ -75,7 +76,7 @@ class RepsController < ApplicationController
 
   private
   def add_commas(str)
-    str.split('.').tap do |ds, _| 
+    str.split('.').tap do |ds, _|
       ds.replace ds.reverse.scan(/\d{1,3}/).join(',').reverse
     end.join('.')
   end

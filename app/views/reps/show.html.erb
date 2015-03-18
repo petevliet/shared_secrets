@@ -11,6 +11,8 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 <%= link_to "Facebook", @facebook_url %><br />
 <%= link_to "YouTube", @youtube_url %><br />
 
+<%= link_to "Post a link about this legislator", new_rep_post_path(params[:cid]) %>
+
 
 <br />Last Updated: <%= @last_updated %>
 

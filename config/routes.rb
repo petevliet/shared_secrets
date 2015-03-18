@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :reps, only: [:index, :show], param: :cid
+  resources :reps, only: [:index, :show], param: :cid do
+    resources :posts
+  end
 
   root 'reps#index'
 

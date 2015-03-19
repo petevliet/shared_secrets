@@ -3,15 +3,15 @@
 <%= @chamber %><br />
 <%= @state %><br />
 Serving Since: <%= @first_elected %><br />
-Funds Raised: $<%= @total %><br />
-Spent: $<%= @spent %><br />
+Funds Raised (last campaign cycle): $<%= @total %><br />
+Spent (last campaign cycle): $<%= @spent %><br />
 Cash on Hand: $<%= @cash_on_hand %><br />
 
 <br /><%= link_to "Twitter", @twitter_url %><br />
 <%= link_to "Facebook", @facebook_url %><br />
 <%= link_to "YouTube", @youtube_url %><br />
 
-<%= link_to "Post a link about this legislator", new_rep_post_path(@rep_cid) %>
+<%= link_to "Post a link about #{@name}", new_rep_post_path(@rep_cid) %>
 <br />
 
 <% if @posts.present? %>
@@ -19,12 +19,11 @@ Cash on Hand: $<%= @cash_on_hand %><br />
   <% @posts.each do |post| %>
     <%= link_to "#{post.link}", post.link %><br />
     <%= post.body %><br />
+    
     <%= link_to pluralize(post.comments.count, "Comment"), rep_post_path(@rep_cid, post) %><br />
     <%= link_to 'Comment on this Post', new_rep_post_comment_path(@rep_cid, post) %><br />
   <% end %>
 <% end %>
-
-<br />Last Updated: <%= @last_updated %>
 
 <h1>Top 5 Contributors</h1>
 <table>
@@ -85,3 +84,5 @@ Cash on Hand: $<%= @cash_on_hand %><br />
   <%= f.input :tweet_text %>
   <%= f.button :submit %>
 <% end %> -->
+
+<br />Last Updated: <%= @last_updated %>

@@ -46,7 +46,7 @@ class RepsController < ApplicationController
 
     case summary["chamber"]
     when "H"
-      @chamber = "House"
+      @chamber = "House of Representatives"
     when "S"
       @chamber = "Senate"
     else

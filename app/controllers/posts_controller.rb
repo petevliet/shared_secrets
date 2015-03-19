@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = Comment.where(post_id:(params[:id]))
+    @cid = params[:rep_cid]
   end
 
   def new
@@ -14,6 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.cid = params[:rep_cid]
     @post.user = current_user
+    @cid = params[:rep_cid]
     if @post.save
       flash[:notice] = "post successfully created"
       redirect_to rep_path(params[:rep_cid])

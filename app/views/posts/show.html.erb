@@ -1,9 +1,9 @@
 <h4>
-  <%= @post.link %>
+  <%= link_to "#{@post.link}", @post.link %>
 </h4><br />
   <%= @post.body %><br />
   <% @post.comments.each do |comment| %>
     <%= comment.body %><br />
-    Posted by: <%=  %>
-    <%= link_to 'Comment on this Post', new_rep_post_comment_path((params[:rep_cid]), @post) %><br />
   <% end %>
+
+  <%= link_to "Comment on this Post", new_rep_post_comment_path(@cid, @post) %><br />

@@ -18,6 +18,7 @@ class RepsController < ApplicationController
           @sens[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
         end
       end
+      @reps = @reps.sort_by {|_, rep| rep.split.last.downcase}
     end
   end
 

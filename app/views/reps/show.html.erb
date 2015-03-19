@@ -19,8 +19,8 @@ Cash on Hand: $<%= @cash_on_hand %><br />
   <% @posts.each do |post| %>
     <%= post.link %><br />
     <%= post.body %><br />
-    <%= link_to pluralize(post.comments.count, "Comment"), rep_post_path((params[:cid]), post) %><br />
-    <%= link_to 'Comment on this Post', new_rep_post_comment_path((params[:cid]), post) %><br />
+    <%= link_to pluralize(post.comments.count, "Comment"), rep_post_path(@rep_cid, post) %><br />
+    <%= link_to 'Comment on this Post', new_rep_post_comment_path(@rep_cid, post) %><br />
   <% end %>
 <% end %>
 

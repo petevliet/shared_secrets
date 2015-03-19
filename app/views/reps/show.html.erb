@@ -76,6 +76,12 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 <br>
 
 <%= simple_form_for @tweet, url: user_tweets_path(current_user) do |f| %>
-  <%= f.input :tweet_text %>
+  <%= f.collection_radio_buttons :tweet_text, [[@tweet_1.to_sym, @tweet_1] ,[false, 'This is tweet number two.'], [false, 'This is a third tweet.']], :first, :last %>
   <%= f.button :submit %>
 <% end %>
+
+
+<!-- <%= simple_form_for @tweet, url: user_tweets_path(current_user) do |f| %>
+  <%= f.input :tweet_text %>
+  <%= f.button :submit %>
+<% end %> -->

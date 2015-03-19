@@ -55,6 +55,9 @@ nav {
   text-align: center;
   // styling
   background-color: $base_green;
+  background-image: url(/trendy_poly.svg);
+  background-repeat: no-repeat;
+  background-position: right top;
 }
 
 a, a:hover, a:focus, a:visited {

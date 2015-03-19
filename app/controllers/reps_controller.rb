@@ -68,6 +68,7 @@ class RepsController < ApplicationController
     state_info_results = df.state_info(@state)["response"]["legislator"]
     state_info_results.each do |rep|
       if rep["@attributes"]["cid"] == params[:cid]
+        @twitter_handle = rep["@attributes"]["twitter_id"]
         @twitter_url = "https://twitter.com/" + rep["@attributes"]["twitter_id"]
         @youtube_url = rep["@attributes"]["youtube_url"]
         @facebook_url = "https://facebook.com/" + rep["@attributes"]["facebook_id"]
@@ -83,6 +84,14 @@ class RepsController < ApplicationController
     @industries = top_five(industry_info_results)
 
     @tweet = Tweet.new
+
+  #  if @twitter_handle != ""
+      @tweet_1 = "Hey " + "@demullane" + " it's great that you've raked in $" + @total + " since " + @first_elected + "!"
+  #   else
+  #     @tweet_1 = "Hey " + @name +
+  #   end
+  #   @tweet_2 =
+  #   @tweet_3 =
   end
 
   private

@@ -17,7 +17,7 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 <% if @posts.present? %>
 <h4>Posts about <%= @name %> </h4>
   <% @posts.each do |post| %>
-    <%= post.link %><br />
+    <%= link_to "#{post.link}", post.link %><br />
     <%= post.body %><br />
     <%= link_to pluralize(post.comments.count, "Comment"), rep_post_path(@rep_cid, post) %><br />
     <%= link_to 'Comment on this Post', new_rep_post_comment_path(@rep_cid, post) %><br />

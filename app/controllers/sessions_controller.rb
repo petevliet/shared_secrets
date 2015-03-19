@@ -11,7 +11,10 @@ def create
   user = User.find_or_create_by(twitter_id: uid)
 
   user.update_attributes(name: env['omniauth.auth']['info']['name'],
-                          email: env['omniauth.auth']['info']['email'])
+                          email: env['omniauth.auth']['info']['email'],
+                          nickname: env['omniauth.auth']['info']['nickname'].downcase,
+                          user_token: env['omniauth.auth']['credentials']['token'],
+                          user_token_secret: env['omniauth.auth']['credentials']['secret'])
 
   redirect_to reps_path, notice: "You're logged in!"
 end

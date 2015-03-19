@@ -64,5 +64,11 @@ module ApplicationHelper
       "WY" => "Wyoming",
     }
   end
+
+  def user_set_state
+    if current_user and current_user.state.nil?
+      redirect_to set_state_path
+    end
+  end
     
 end

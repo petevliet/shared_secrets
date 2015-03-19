@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   root 'landing#visitors'
+  get '/set_state' => 'landing#set_state'
 
   get 'auth/twitter/callback' => 'sessions#create'
 

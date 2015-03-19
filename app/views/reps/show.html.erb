@@ -69,3 +69,13 @@ Cash on Hand: $<%= @cash_on_hand %><br />
     <% end %>
   </tbody>
 </table>
+
+
+<br>
+<br>
+<br>
+
+<%= simple_form_for @tweet, url: user_tweets_path(current_user) do |f| %>
+  <%= f.input :tweet_text %>
+  <%= f.button :submit %>
+<% end %>

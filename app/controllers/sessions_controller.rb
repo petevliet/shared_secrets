@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :user_set_state, only: []
 
 def new
 end

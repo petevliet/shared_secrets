@@ -16,8 +16,8 @@ class RepsController < ApplicationController
           @reps[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
         elsif rep["@attributes"]["office"][-2] == "S"
           @sens[rep["@attributes"]["cid"]] = [rep["@attributes"]["firstlast"], rep["@attributes"]["party"]]
+        end
       end
-    end
     end
   end
 
@@ -81,6 +81,8 @@ class RepsController < ApplicationController
     industry_info_results = df.industry_info(params[:cid])\
       ["response"]["industries"]["industry"]
     @industries = top_five(industry_info_results)
+
+    @tweet = Tweet.new
   end
 
   private
@@ -107,10 +109,10 @@ class RepsController < ApplicationController
     end
   end
 
-def authorize
-  if !logged_in?
-    redirect_to '/visitors', notice: "Please log in for full access."
-end
-end
+  def authorize
+    if !logged_in?
+      redirect_to '/visitors', notice: "Please log in for full access."
+    end
+  end
 
 end

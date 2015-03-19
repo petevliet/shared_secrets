@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.cid = params[:rep_cid]
-    @post.user_id = session[:user_id]
+    @post.user = current_user
     if @post.save
       flash[:notice] = "post successfully created"
       redirect_to rep_path(params[:rep_cid])

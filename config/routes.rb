@@ -6,16 +6,20 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [] do
+    resources :tweets, only: [:create]
+  end
+
   root 'landing#visitors'
 
   get 'auth/twitter/callback' => 'sessions#create'
 
-  get 'auth/twitter/failure' => 'errors#index'
-
-  resources :users
-
   get '/logout' => 'sessions#destroy'
 
+  # get 'auth/twitter/failure' => 'errors#index'
+
   get '/visitors' => 'landing#visitors'
+
+
 
 end

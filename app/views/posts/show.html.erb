@@ -3,6 +3,7 @@
 </h4><br />
   <%= @post.body %><br />
   <% @post.comments.each do |comment| %>
-    <%= comment.body %>
+    <%= comment.body %><br />
+    Posted by: <%=  %>
     <%= link_to 'Comment on this Post', new_rep_post_comment_path((params[:rep_cid]), @post) %><br />
   <% end %>

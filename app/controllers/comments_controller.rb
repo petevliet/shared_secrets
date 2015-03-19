@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.post = Post.find(params[:post_id])
-    @comment.user_id = session[:user_id]
+    @comment.user = current_user
     if @comment.save
       flash[:notice] = "comment successfully created"
       redirect_to rep_path(params[:rep_cid])

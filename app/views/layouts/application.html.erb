@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<%= render 'application/head' %>
-<body>
-  <%= render 'application/navbar' %>
-  <div class="container">
-    <%= render 'application/flash' %>
-    <%= yield %>
-    <%= render partial: 'application/footer' %>
-  </div>
-</body>
+
+  <%= render 'application/head' %>
+
+  <body>
+    <%= render 'application/navbar' %>
+    <div class="container">
+      <%= render 'application/flash' %>
+      <%= yield %>
+      <%= render partial: 'application/footer' %>
+    </div>
+  </body>
 </html>

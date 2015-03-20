@@ -130,42 +130,43 @@
 
 <br />Data Last Updated: <%= @last_updated %>
 
-<div class="">
-  <h3>Posts about <%= @name %> </h3>
-  <%= link_to "Post a link about #{@name}", new_rep_post_path(@rep_cid) %>
-  <%= form_for @new_post, url: rep_posts_path(@rep_cid),
-    html: {class: 'pure-form pure-form-stacked'} do |f| %>
-      <%= f.text_field :link, as: :url, placeholder: 'https://...' %>
-      <%= f.text_area :body %>
-      <%= f.submit %>
-  <% end %>
+<div>
+  <h3>Post a link about <%= @name %></h3>
+
+    <%= form_for @new_post, url: rep_posts_path(@rep_cid),
+      html: {class: 'pure-form pure-form-stacked'} do |f| %>
+        <%= f.text_field :link, as: :url, placeholder: 'https://...' %>
+        <%= f.text_field :body, placeholder: 'Comments...' %>
+        <%= f.submit %>
+    <% end %>
+
+  <h3 class = "posts-header">Posts about <%= @name %></h3>
 
   <% @posts.each do |post| %>
    <% new_comment = Comment.new %>
-    <div class="post-box">
-      <h5><%= post.user.name %></h5>
-      <%= link_to "#{post.link}", post.link %>
-      <%= post.body %>
-      <h4>Comments</h4>
+   <p class = "post-name">Post by <%= post.user.name %></p>
+   <div class = "post-box">
+     &nbsp;&nbsp;<div class = "post-link"><%= link_to "#{post.link}", post.link, target: "_blank" %></div>
+     &nbsp;&nbsp;<div><%= post.body %></div>
+    </div>
+    <div class = "comment-box-main">
+      <div class = "comment-header">Comments</div>
       <% comments = post.comments %>
       <% unless comments.empty? %>
         <% comments.each do |comment| %>
           <div class="comment-box">
-            <h5>
-              <%= comment.user.name %>
-              <small><%= comment.created_at.to_formatted_s(:long) %></small>
-            </h5>
-            <%= comment.body %>
-          </div>
+              <div><%= comment.user.name %> | <small><%= comment.created_at.to_formatted_s(:long) %></small><br /></div>
+              <div><%= comment.body %></div>
+          </div><br />
         <% end %>
       <% else %>
-        <p>
+        <div>
           Be the the first to comment!
-        </p>
+        </div>
       <% end %>
       <%= form_for new_comment, url: rep_post_comments_path(@rep_cid, post),
         html: {class: 'pure-form pure-form-stacked'} do |f| %>
-        <%= f.text_area :body, placeholder: 'Comment here...' %>
+        <%= f.text_area :body, placeholder: 'Comment here...', class: "comment-text" %>
         <%= f.submit %>
       <% end %>
     </div>

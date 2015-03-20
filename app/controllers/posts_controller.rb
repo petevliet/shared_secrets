@@ -17,14 +17,12 @@ class PostsController < ApplicationController
     @post.user = current_user
     @cid = params[:rep_cid]
     if @post.save
-      flash[:notice] = "post successfully created"
+      flash[:notice] = "Post successfully created."
       redirect_to rep_path(params[:rep_cid])
     else
       render :new
     end
   end
-
-
 
   private
   def post_params

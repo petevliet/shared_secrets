@@ -30,10 +30,6 @@
   </thead>
   <tbody>
     <tr>
-      <td><strong>PARTY:</strong></td>
-      <td><%= @party %></td>
-    </tr>
-    <tr>
       <td><strong>CHAMBER:</strong></td>
       <td><%= @chamber %></td>
     </tr>
@@ -58,7 +54,7 @@
     CASH ON HAND:&nbsp;&nbsp;$<%= @cash_on_hand %>
   </font>
 </div>
-<p class = "rep-spent-cash-notice">*since last campaign cycle</p>
+<p class = "rep-spent-cash-notice">* last campaign cycle, <%= @since %></p>
 
 <div class="pure-g">
   <div class="pure-u-1-1 pure-u-xl-1-2">
@@ -128,8 +124,6 @@
   </div>
 </div>
 
-<br />Data Last Updated: <%= @last_updated %>
-
 <div class="">
   <h3>Posts about <%= @name %> </h3>
   <%= link_to "Post a link about #{@name}", new_rep_post_path(@rep_cid) %>
@@ -171,3 +165,5 @@
     </div>
   <% end %>
 </div>
+
+<br />Data Last Updated: <%= @last_updated %>

@@ -5,9 +5,9 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(params.require(:tweet).permit(:tweet_text, :user_id))
     if @tweet.save
       @user_tweeter.send_tweet(@tweet)
-      redirect_to reps_path, notice: "Your tweet has been tweeted."
+      redirect_to rep_path(params[:cid]), notice: "Your tweet has been tweeted."
     else
-      redirect_to reps_path
+      redirect_to rep_path(params[:cid])
     end
   end
 

@@ -25,24 +25,22 @@
   </div>
 </div>
 
-<% if @show_modal %>
-  <div class="modal-backdrop">
-    <div class="modal-well">
-      <h2>Please select a State</h2>
-        <div class="pure-menu pure-menu-horizontal state-select">
-          <ul class="pure-menu-list">
-            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-              <a href="#" id="menuLink1" class="pure-menu-link">Select a State</a>
-              <ul class="pure-menu-children">
-                <% states_by_abbrev.each do |abbrev, state| %>
-                  <li class="pure-menu-item">
-                    <%= link_to state, set_state_path(state: abbrev), class: 'pure-menu-link' %>
-                  </li>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
-        </div>
-    </div>
+<div class="modal-backdrop <%= @show_modal %>">
+  <div class="modal-well">
+    <h2>Please select a State</h2>
+      <div class="pure-menu pure-menu-horizontal state-select">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">Select a State</a>
+            <ul class="pure-menu-children">
+              <% states_by_abbrev.each do |abbrev, state| %>
+                <li class="pure-menu-item">
+                  <%= link_to state, set_state_path(state: abbrev), class: 'pure-menu-link' %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
   </div>
-<% end %>
+</div>

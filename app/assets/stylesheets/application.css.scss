@@ -374,13 +374,24 @@ h3 {
   width: 100%;
   box-sizing: border-box;
   height: 6em;
-  padding: 0.5em;
+  padding: 0.4em;
   textarea {
     width: 100%;
     height: 6em;
   }
+  input[type="submit"],
+  a.modal-button-cancel {
+    box-sizing: border-box;
+    width: 49%;
+    text-transform: none;
+
+  }
   input[type="submit"] {
-    width: 100%;
+    background-color: #55ACEE;
+  }
+  a.modal-button-cancel {
+    background-color: $base_beige_medium;
+    color: #FFFFFF;
   }
 }
 

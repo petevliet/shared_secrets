@@ -124,6 +124,7 @@
       <%= hidden_field_tag :cid, @rep_cid %>
       <%= f.text_area :tweet_text, :id => "tweet_option" %>
       <%= f.submit 'Tweet', class: 'pure-button pure-button-primary' %>
+      <%= link_to 'Cancel', '#', class: 'pure-button modal-button-cancel' %>
     <% end %>
   </div>
 </div>

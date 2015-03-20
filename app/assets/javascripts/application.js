@@ -57,8 +57,10 @@ var main = function() {
   }
   // allow users to click out of it
   else {
-    modal_backdrop.click(function() {
+    var cancel_button = $('.modal-button-cancel');
+    cancel_button.click(function(event) {
       modal_backdrop.fadeOut(300);
+      event.preventDefault();
     });
   }
 }

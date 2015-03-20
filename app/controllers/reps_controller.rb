@@ -103,11 +103,11 @@ class RepsController < ApplicationController
     @tweet = Tweet.new
 
     @tweets = [
-      "Hey " + "@demullane" + " it's great that you raked in $" + @total + " during the last election cycle!",
-      "Hey " + "@demullane" + ", you spent $" + @spent + " during the last election cycle. But did the people of " + @state + " benefit?",
-      "Hey " + "@demullane" + ", nice to know you're sitting on $" + @cash_on_hand + " from the last election cycle... ",
-      "@demullane" + " raked in " + "#{@contributors.first["total"]}" + " from " + "#{@contributors.first["org_name"]} just in the last election cycle!",
-      "@demullane" + " raked in " + "#{@industries.first["total"]}" + " from " + "#{@industries.first["industry_name"]} just in the last election cycle!"
+      "Hey " + "@#{@twitter_handle}" + " it's great that you raked in $" + @total + " during the last election cycle!",
+      "Hey " + "@#{@twitter_handle}" + ", you spent $" + @spent + " during the last election cycle. But did the people of " + @state + " benefit?",
+      "Hey " + "@#{@twitter_handle}" + ", nice to know you're sitting on $" + @cash_on_hand + " from the last election cycle... ",
+      "@#{@twitter_handle}" + " raked in " + "$#{@contributors.first["total"]}" + " from " + "#{@contributors.first["org_name"]} just in the last election cycle!",
+      "@#{@twitter_handle}" + " raked in " + "$#{@industries.first["total"]}" + " from " + "#{@industries.first["industry_name"]} just in the last election cycle!"
     ]
 
   end

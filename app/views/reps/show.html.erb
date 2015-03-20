@@ -64,23 +64,16 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 </div>
 
 
-<br>
-<br>
-<br>
-
-<%= form_for @tweet, url: user_tweets_path(current_user),
-  html: {class: 'pure-form'} do |f| %>
-  <%= f.collection_radio_buttons :tweet_text, [[@tweet_1.to_sym, @tweet_1] ,['two', 'This is tweet number two.'], ['three', 'This is a third tweet.']], :first, :last do |b| %>
-    <% b.label(class: 'pure-radio') { b.radio_button + ' ' + b.text } %>
+<div class="pure-form">
+  <% @tweets.each_with_index do |tweet, num| %>
+    <%= tweet %> <input type="radio" value="<%= tweet %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_<%= num + 1%>"><br>
   <% end %>
-  <%= f.submit %>
+</div>
+
+<%= simple_form_for @tweet, url: user_tweets_path(current_user) do |f| %>
+  <%= f.input :tweet_text, label: "Hey write your text here!", :input_html => { :style=> 'width:400px', :id => "tweet_option" } %>
+  <%= f.button :submit %>
 <% end %>
-
-
-<!-- <%= simple_form_for @tweet, url: user_tweets_path(current_user) do |f| %>
-  <%= f.input :tweet_text %>
-  <%= f.submit %>
-<% end %> -->
 
 <br />Last Updated: <%= @last_updated %>
 

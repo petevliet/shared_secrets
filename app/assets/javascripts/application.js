@@ -14,3 +14,34 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+function TweetPick() {
+            if (document.getElementById('tweet_tweet_text_tweet_1').checked) {
+                var word = document.getElementById('tweet_tweet_text_tweet_1').value;
+                document.getElementById('tweet_option').value = word;
+
+                // window.location.replace("/reps/:id/posts/new");
+            }
+            else if
+            (document.getElementById('tweet_tweet_text_tweet_2').checked) {
+              var word = document.getElementById('tweet_tweet_text_tweet_2').value;
+              document.getElementById('tweet_option').value = word;
+            }
+            else if
+            (document.getElementById('tweet_tweet_text_tweet_3').checked) {
+              var word = document.getElementById('tweet_tweet_text_tweet_3').value;
+              document.getElementById('tweet_option').value = word;
+            }
+            else if
+            (document.getElementById('tweet_tweet_text_tweet_4').checked) {
+              var word = document.getElementById('tweet_tweet_text_tweet_4').value;
+              document.getElementById('tweet_option').value = word;
+            }
+            else if
+            (document.getElementById('tweet_tweet_text_tweet_5').checked) {
+              var word = document.getElementById('tweet_tweet_text_tweet_5').value;
+              document.getElementById('tweet_option').value = word;
+            }
+            else document.getElementById('tweet_option').value = '';
+        }

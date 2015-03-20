@@ -83,16 +83,9 @@ Cash on Hand: $<%= @cash_on_hand %><br />
 <br>
 <br>
 
-<%= @tweet_1 %> <input type="radio" value="<%= @tweet_1 %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_1"><br>
-
-<%= @tweet_2 %> <input type="radio" value="<%= @tweet_2 %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_2"><br>
-
-<%= @tweet_3 %> <input type="radio" value="<%= @tweet_3 %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_3"><br>
-
-<%= @tweet_4 %> <input type="radio" value="<%= @tweet_4 %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_4"><br>
-
-<%= @tweet_5 %> <input type="radio" value="<%= @tweet_5 %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_5"><br>
-
+<% @tweets.each_with_index do |tweet, num| %>
+  <%= tweet %> <input type="radio" value="<%= tweet %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_<%= num + 1%>"><br>
+<% end %>
 
 <br>
 <br>

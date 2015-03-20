@@ -339,3 +339,57 @@ footer {
 h3 {
   font-size: 2em;
 }
+
+.rep-header {
+  font-weight: 700;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  margin-left: 5em;
+  color: $base_charcoal;
+}
+
+.rep-header-line {
+  margin-top: -3.2em;
+  margin-left: 13.8em;
+  margin-right: 25em;
+  border-bottom: 12px solid $base_charcoal;
+  margin-bottom: -3em;
+}
+
+.rep-imgs {
+  float: left;
+}
+
+.rep-table {
+  width: 20em;
+}
+
+.rep-funds-raised {
+  font-weight: 700;
+  font-size: 3em; /*2em*/
+  text-transform: uppercase;
+  margin-top: -.05em;
+  margin-left: 4.05em;
+  color: $base_charcoal;
+  /*margin-left: 6.36em;*/
+}
+
+.rep-spent-cash {
+  background-color: $base-charcoal;
+  line-height: 2em;
+  margin-top: -5.5em;
+  margin-left: 13.8em;
+  margin-right: 25em;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+.rep-spent-cash-notice {
+  margin-left: 13.3em;
+  margin-top: -.5em;
+}
+
+.social-media-icons {
+  margin-left: 35.7em;
+  margin-top: -100em;
+}

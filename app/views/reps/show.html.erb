@@ -70,10 +70,16 @@ Cash on Hand: $<%= @cash_on_hand %><br />
   <% end %>
 </div>
 
-<%= simple_form_for @tweet, url: user_tweets_path(current_user) do |f| %>
-  <%= f.input :tweet_text, label: "Hey write your text here!", :input_html => { :style=> 'width:400px', :id => "tweet_option" } %>
-  <%= f.button :submit %>
-<% end %>
+<div class="modal-backdrop">
+  <div class="modal-well">
+    <%= form_for @tweet, url: user_tweets_path(current_user),
+      html: {class: 'pure-form pure-form-stacked tweet-form'} do |f| %>
+      <%= hidden_field_tag :cid, @rep_cid %>
+      <%= f.text_area :tweet_text, :id => "tweet_option" %>
+      <%= f.submit 'Tweet', class: 'pure-button pure-button-primary' %>
+    <% end %>
+  </div>
+</div>
 
 <br />Data Last Updated: <%= @last_updated %>
 

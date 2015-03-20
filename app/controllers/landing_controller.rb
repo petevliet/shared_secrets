@@ -6,7 +6,7 @@ class LandingController < ApplicationController
       if current_user.state
         redirect_to reps_path
       else
-        @show_modal = true
+        @show_modal = 'nohide'
       end
     end
   end

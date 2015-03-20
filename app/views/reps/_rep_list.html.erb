@@ -7,7 +7,7 @@
         <%= link_to rep_path(cid) do %>
           <div class="rep-thumbnail">
             <div class="rep-img <%= img_class %>">
-              <%= image_tag "https://s3.amazonaws.com/assets.opensecrets.org/politicians/img/#{cid}.jpg" %>
+              <%= image_tag "https://s3.amazonaws.com/assets.opensecrets.org/politicians/img/#{cid}.jpg", class: 'thumbnail-img' %>
             </div>
             <div class="rep-caption"><%= name %></div>
           </div>

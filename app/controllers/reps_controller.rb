@@ -69,11 +69,11 @@ class RepsController < ApplicationController
 
     @first_elected = summary["first_elected"]
 
-    @total = add_commas(summary["total"])
+    @total = add_commas(summary["total"].to_i.floor.to_s)
 
-    @spent = add_commas(summary["spent"])
+    @spent = add_commas(summary["spent"].to_i.floor.to_s)
 
-    @cash_on_hand = add_commas(summary["cash_on_hand"])
+    @cash_on_hand = add_commas(summary["cash_on_hand"].to_i.floor.to_s)
 
     @last_updated = summary["last_updated"]
 

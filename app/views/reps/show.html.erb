@@ -1,21 +1,68 @@
-<h1><%= @name %></h1>
-<%#= image_tag "https://s3.amazonaws.com/assets.opensecrets.org/politicians/img/#{@rep_cid}.jpg" %>
-<%= image_tag "/party_icons/donkey_icon.png" %>
-<%= @party %><br />
-<%= @chamber %><br />
-<%= @state %><br />
-Serving Since: <%= @first_elected %><br />
-Funds Raised (last campaign cycle): $<%= @total %><br />
-Spent (last campaign cycle): $<%= @spent %><br />
-Cash on Hand: $<%= @cash_on_hand %><br />
+<span class = "rep-imgs">
+  <%= image_tag "https://s3.amazonaws.com/assets.opensecrets.org/politicians/img/#{@rep_cid}.jpg" %>
+  <%= image_tag "/party_icons/donkey_icon.png" %>
+</span>
 
-<br /><%= link_to "Twitter", @twitter_url %><br />
-<%= link_to "Facebook", @facebook_url %><br />
-<%= link_to "YouTube", @youtube_url %><br />
+<p class = "rep-header"><%= @name %></p>
+
+<div class = "rep-header-line"></div><br /><br />
+<span class = "social-media-icons">
+  <%= link_to(@facebook_url, title: 'Facebook', target: "_blank") do %>
+    <%= image_tag("/facebook_60x60.png", width: '30', height: '30', alt: 'Facebook') %>
+  <% end %>
+  <%= link_to(@twitter_url, title: 'Twitter', target: "_blank") do %>
+    <%= image_tag("/twitter_60x60.png", width: '30', height: '30', alt: 'Twitter') %>
+  <% end %>
+  <%= link_to(@youtube_url, title: 'YouTube', target: "_blank") do %>
+    <%= image_tag("/youtube_60x60.png", width: '30', height: '30', alt: 'YouTube') %>
+  <% end %>
+   <%#= image_tag "/logo.png" %>
+</span>
+
+<table class = "rep-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>PARTY:</strong></td>
+      <td><%= @party %></td>
+    </tr>
+    <tr>
+      <td><strong>CHAMBER:</strong></td>
+      <td><%= @chamber %></td>
+    </tr>
+    <tr>
+      <td><strong>STATE:</strong></td>
+      <td><%= @state %></td>
+    </tr>
+    <tr>
+      <td><strong>SERVING SINCE:</strong></td>
+      <td><%= @first_elected %></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- (last campaign cycle) -->
+<p class = "rep-funds-raised">Funds Raised&nbsp;&nbsp;&nbsp;$<%= @total %>*</p></center>
+<div class = "rep-spent-cash">
+  <font style = "padding-left: 6em;">
+    SPENT:&nbsp;&nbsp;$<%= @spent %>*
+  </font>
+  <font style = "padding-left: 9em;">
+    CASH ON HAND:&nbsp;&nbsp;$<%= @cash_on_hand %>
+  </font>
+</div>
+<p class = "rep-spent-cash-notice">*since last campaign cycle</p>
 
 <div class="pure-g">
   <div class="pure-u-1-1 pure-u-xl-1-2">
-    <h2>Top 5 Contributors</h2>
+    <h2>TOP 5 CONTRIBUTORS</h2>
     <table class="pure-table">
       <thead>
         <tr>
@@ -39,7 +86,7 @@ Cash on Hand: $<%= @cash_on_hand %><br />
   </div>
 
   <div class="pure-u-1-1 pure-u-xl-1-2">
-    <h2>Top 5 Industries</h2>
+    <h2>TOP 5 INDUSTRIES</h2>
     <table class="pure-table">
       <thead>
         <tr>

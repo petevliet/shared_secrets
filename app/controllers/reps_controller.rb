@@ -107,7 +107,7 @@ class RepsController < ApplicationController
       "Hey " + "@#{@twitter_handle}" + ", you spent $" + @spent + " during the last election cycle. But did the people of " + @state + " benefit?",
       "Hey " + "@#{@twitter_handle}" + ", nice to know you're sitting on $" + @cash_on_hand + " from the last election cycle... ",
       "@#{@twitter_handle}" + " raked in " + "$#{@contributors.first["total"]}" + " from " + "#{@contributors.first["org_name"]} just in the last election cycle!",
-      "@#{@twitter_handle}" + " raked in " + "$#{@industries.first["total"]}" + " from " + "#{@industries.first["industry_name"]} just in the last election cycle!"
+      "@#{@twitter_handle}" + " raked in " + "$#{@industries.first["total"]}" + " from the " + "#{@industries.first["industry_name"]} industry just in the last election cycle!"
     ]
 
   end

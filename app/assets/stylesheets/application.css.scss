@@ -135,7 +135,6 @@ footer {
   border-top: 1px #A5A5A5 solid;
   padding: 1em;
   // styling
-  text-align: right;
   color: #909090;
 }
 
@@ -397,4 +396,8 @@ h3 {
   a[href] {
     text-transform: none;
   }
+}
+
+.copyright-float-right {
+  float: right;
 }

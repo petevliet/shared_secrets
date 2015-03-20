@@ -1,4 +1,4 @@
-<%= simple_form_for @comment, url: rep_post_comments_path(@cid, @post) do |f| %>
+<%= form_for @comment, url: rep_post_comments_path(@cid, @post) do |f| %>
   <%= f.input :body %>
   <%= f.button :submit %>
 <% end %>

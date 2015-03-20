@@ -83,15 +83,16 @@ class RepsController < ApplicationController
       ["response"]["industries"]["industry"]
     @industries = top_five(industry_info_results)
 
+
+    #TWEETING STUFF
     @tweet = Tweet.new
 
-  #  if @twitter_handle != ""
-      @tweet_1 = "Hey " + "@demullane" + " it's great that you've raked in $" + @total + " since " + @first_elected + "!"
-  #   else
-  #     @tweet_1 = "Hey " + @name +
-  #   end
-  #   @tweet_2 =
-  #   @tweet_3 =
+    @tweet_1 = "Hey " + "@demullane" + " it's great that you raked in $" + @total + " during the last election cycle!"
+    @tweet_2 = "Hey " + "@demullane" + ", you spent $" + @spent + " during the last election cycle. But did the people of " + @state + " benefit?"
+    @tweet_3 = "Hey " + "@demullane" + ", nice to know you're sitting on $" + @cash_on_hand + " from the last election cycle... "
+    @tweet_4 = "@demullane" + " raked in " + "#{@contributors.first["total"]}" + " from " + "#{@contributors.first["org_name"]} just in the last election cycle!"
+    @tweet_5 = "@demullane" + " raked in " + "#{@industries.first["total"]}" + " from " + "#{@industries.first["industry_name"]} just in the last election cycle!"
+
   end
 
   private

@@ -12,22 +12,24 @@
           <%= link_to "Sign in with Twitter", "/auth/twitter", class: 'pure-menu-link' %>
         </li>
       <% else %>
-        <li class="pure-menu-item">
-          <div class="pure-menu pure-menu-horizontal state-select">
-            <ul class="pure-menu-list">
-              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                <a href="#" id="menuLink1" class="pure-menu-link">Find Representitives</a>
-                <ul class="pure-menu-children">
-                  <% states_by_abbrev.each do |abbrev, state| %>
+        <% if current_user.state %>
           <li class="pure-menu-item">
-                      <%= link_to state, reps_path(state: abbrev), class: 'pure-menu-link' %>
-                    </li>
-                  <% end %>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </li>
+            <div class="pure-menu pure-menu-horizontal state-select">
+              <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                  <a href="#" id="menuLink1" class="pure-menu-link">Find Representitives</a>
+                  <ul class="pure-menu-children">
+                    <% states_by_abbrev.each do |abbrev, state| %>
+            <li class="pure-menu-item">
+                        <%= link_to state, reps_path(state: abbrev), class: 'pure-menu-link' %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+        <% end %>
         <li class="pure-menu-item">
           <%= link_to "Log Out", "/logout", class: 'pure-menu-link' %>
         </li>

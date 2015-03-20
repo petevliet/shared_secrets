@@ -87,11 +87,13 @@ class RepsController < ApplicationController
     #TWEETING STUFF
     @tweet = Tweet.new
 
-    @tweet_1 = "Hey " + "@demullane" + " it's great that you raked in $" + @total + " during the last election cycle!"
-    @tweet_2 = "Hey " + "@demullane" + ", you spent $" + @spent + " during the last election cycle. But did the people of " + @state + " benefit?"
-    @tweet_3 = "Hey " + "@demullane" + ", nice to know you're sitting on $" + @cash_on_hand + " from the last election cycle... "
-    @tweet_4 = "@demullane" + " raked in " + "#{@contributors.first["total"]}" + " from " + "#{@contributors.first["org_name"]} just in the last election cycle!"
-    @tweet_5 = "@demullane" + " raked in " + "#{@industries.first["total"]}" + " from " + "#{@industries.first["industry_name"]} just in the last election cycle!"
+    @tweets = [
+      "Hey " + "@demullane" + " it's great that you raked in $" + @total + " during the last election cycle!",
+      "Hey " + "@demullane" + ", you spent $" + @spent + " during the last election cycle. But did the people of " + @state + " benefit?",
+      "Hey " + "@demullane" + ", nice to know you're sitting on $" + @cash_on_hand + " from the last election cycle... ",
+      "@demullane" + " raked in " + "#{@contributors.first["total"]}" + " from " + "#{@contributors.first["org_name"]} just in the last election cycle!",
+      "@demullane" + " raked in " + "#{@industries.first["total"]}" + " from " + "#{@industries.first["industry_name"]} just in the last election cycle!"
+    ]
 
   end
 

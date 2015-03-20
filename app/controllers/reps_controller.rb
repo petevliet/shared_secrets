@@ -6,10 +6,11 @@ class RepsController < ApplicationController
     df = DataFetcher.new
     @reps = {}
     @sens = {}
-    @state_name = states_by_abbrev[params[:state]]
+    state = (params[:state] or current_user.state)
+    @state_name = states_by_abbrev[state]
 
-    if params[:state]
-      state_info_results = df.state_info(params[:state])
+    if state
+      state_info_results = df.state_info(state)
       state_info_results["response"]["legislator"].each do |rep|
         # find the name
         cid = rep["@attributes"]["cid"]

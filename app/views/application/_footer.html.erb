@@ -1,4 +1,8 @@
 <footer>
-  <%= link_to image_tag("opensecrets.gif"), "http://opensecrets.org/politicians" %>
-  &copy; Wizzard Innovations
+  <div class="copyright-float-right">
+    &copy; Wizzard Innovations
+  </div>
+  <%= link_to "http://opensecrets.org/politicians", target: '_blank' do %>
+    <%= image_tag"open_secrets_logo.png", width: '150px' %> 
+  <% end %>
 </footer>

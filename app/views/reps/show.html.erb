@@ -128,8 +128,6 @@
   </div>
 </div>
 
-<br />Data Last Updated: <%= @last_updated %>
-
 <div class="">
   <h3>Posts about <%= @name %> </h3>
   <%= link_to "Post a link about #{@name}", new_rep_post_path(@rep_cid) %>
@@ -171,3 +169,5 @@
     </div>
   <% end %>
 </div>
+
+<br />Data Last Updated: <%= @last_updated %>

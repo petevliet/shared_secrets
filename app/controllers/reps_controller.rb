@@ -60,8 +60,10 @@ class RepsController < ApplicationController
     case summary["chamber"]
     when "H"
       @chamber = "House of Representatives"
+      @since = "2013-2014"
     when "S"
       @chamber = "Senate"
+      @since = "2009-2014"
     else
       @chamber = "Unknown"
     end

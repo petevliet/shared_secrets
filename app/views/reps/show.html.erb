@@ -111,9 +111,14 @@
 </div>
 
 
-<div class="pure-form">
+<div class="pure-form well tweet-radios">
+  <h2>Tweet at @<%= @twitter_handle %></h2>
   <% @tweets.each_with_index do |tweet, num| %>
-    <%= tweet %> <input type="radio" value="<%= tweet %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="tweet_tweet_text_tweet_<%= num + 1%>"><br>
+    <% id = "tweet_tweet_text_tweet_#{num + 1}" %>
+    <label for="<%= id %>" class="pure-radio">
+    <input type="radio" value="<%= tweet %>" onclick="javascript:TweetPick();" name="tweet[tweet_text]" id="<%= id %>">
+    <%= tweet %>
+    </label>
   <% end %>
 </div>
 
